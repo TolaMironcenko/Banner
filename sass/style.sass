@@ -9,12 +9,21 @@
 body
 	font-family: 'Barlow', sans-serif
 	font-style: normal
-	@include size(100%, 100%)
+
+.container
+	position: relative
+	overflow: auto
+	width: 100vw
+	height: 100vh
 
 .navbar
-	margin: 60px 100px 0px auto
-	padding: 5px
-	max-width: 700px
+	position: fixed
+	top: 0
+	right: 0
+	padding: 60px 100px 15px 100px
+	max-width: 900px
+	z-index: 1
+	background-color: white
 
 .navlink
 	margin-left: 60px
@@ -30,12 +39,13 @@ body
 
 .left-menu
 	text-align: center
-	position: absolute
+	position: fixed
 	top: 0
 	left: 0
 	width: 300px
 	height: 100vh
 	border-right: 2px solid #E5E5E5
+	z-index: 1
 
 	.logotype
 		margin-top: 60px
@@ -53,15 +63,19 @@ body
 			@include font(500, 54px, 65px, $primary-color)
 
 		.line-progress
+			position: relative
 			@include size(4px, 200px)
 			background: #E5E5E5
 			border-radius: 2px
 			margin: 15px auto
 
 		.line-progress-now
+			position: absolute
+			top: 0
 			@include size(4px, 42px)
 			background: $primary-color
 			border-radius: 2px
+			transition: transform 0.5s ease-in-out
 
 	.downbtn
 		border: 2px solid $primary-color
@@ -76,21 +90,26 @@ body
 			background-color: #f1d7bf
 
 .social-links
-	position: absolute
-	bottom: 100px
+	position: fixed
+	bottom: 0
+	padding: 15px 60px 100px 100px
 	margin-top: auto
-	margin-left: 500px
+	margin-left: 440px
+	background-color: white
+
+.data
+	display: flex
 
 .list-number
-	position: absolute
-	bottom: 60px
-	right: 100px
+	width: min-content
+	height: min-content
+	margin-left: 80%
+	// margin-top: 80%
 	@include font(600, 200px, 240px, transparent)
 	-webkit-text-stroke: 2px $primary-color
 
 .image-block
-	position: absolute
-	top: 0
+	position: relative
 	margin-left: 450px
 	@include size(520px, 800px)
 	background: url('../imgs/blog-atmosfera-barbershopa-3\ 1.png')
@@ -112,8 +131,9 @@ body
 		@include size(620px, 900px)
 
 .content
-	max-width: 650px
-	margin: 150px 150px 0 auto
+	position: relative
+	width: 650px
+	margin: 150px 150px 0px 100px
 
 	.content-h1
 		@include font(600, 64px, 77px, #050215)
@@ -135,3 +155,20 @@ body
 
 		&:hover
 			@include font(700, 30px, 179.5%, #FFFFFF)
+
+.screens
+	position: absolute
+	top: 0
+	height: 100vh
+	width: 100vw
+	z-index: 0
+	transition: transform 0.5s ease-in-out
+
+.screens > .screen
+	@include size (100vw , 100vh)
+	repeat: no-repeat
+	size: cover
+	position: center center
+
+.up
+	margin-top: -100vh
